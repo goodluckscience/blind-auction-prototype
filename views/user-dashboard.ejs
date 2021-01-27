@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/header'); -%>
+
+<body>
+  <!-- BEGIN Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Blind Auction</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/auction-page">Auction</a>
+          </li>
+          <% if(!locals.userRole) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <% } %>
+          <% if(locals.userRole !== "undefined" && locals.userRole === "user") { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/user-dashboard" >User Dashboard</a>
+          </li>
+          <% } %>
+          <% if(locals.userRole !== "undefined" && locals.userRole === "admin") { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin-dashboard">Admin Dashboard</a>
+          </li>
+          <% } %>
+          <% if(locals.loggedIn) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- END Navigation -->
+
+  <!-- Page Header -->
+  <header class="masthead" style="height: 100px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <% if(userRole === "user") { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+       
+            <h2 class="post-title">
+              User Dashboard
+            </h2>
+            <h3 class="post-subtitle">
+              User: <%= userName %>
+            </h3>
+          
+
+        </div>
+        <hr>
+        <div class="post-preview">
+          &nbsp;
+        </div>
+        <hr>
+        <div class="post-preview">
+          &nbsp;
+        </div>
+        <hr>
+        
+        <hr>
+        <!-- Pager -->
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% } else if(userRole === "admin") { %>
+
+    <!-- BEGIN not user -->
+    <div class="container">
+      <div class="row mt-4" style="text-align: center;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h3 >User account required.</h3>
+        </div>
+      </div>
+    </div>
+    <!-- END not user -->
+
+  <% } else { %>
+
+    <!-- Guest/not logged -->
+    <div class="container">
+      <div class="row mt-4" style="text-align: center;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h3 >Access Denied.</h3>
+        </div>
+      </div>
+    </div>
+    <!-- Guest/not logged -->
+  <% } %>
+
+  <hr>
+  
+
+  <%- include('layouts/footer'); -%>
+
+
+  <%- include('layouts/scripts'); -%>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+
+    });
+</script>
+</body>
+
+</html>
