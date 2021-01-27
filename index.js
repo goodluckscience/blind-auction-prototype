@@ -16,34 +16,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-    var photoTable = [
-        {
-          "id": 'sha1("photoName + time")',
-          "originalPhotoName": "",
-          "photoAlt": "name of item",
-          "photoTitle" : ""
-        },
-
-    ]
-
-  var listingsTable = [
-        {
-          "itemId": "",
-          "bids": [],
-          "listingTime": ""
-        },
-        {
-          "itemId": "",
-          "bids": []
-        },
-  ]
 //---
-
-app.use(session({
-  secret:  'aljf^367@p-+jY', // cookie_secret,
-  resave: true,
-  saveUninitialized: true
-}));
 
 const ejs = require('ejs')
 app.set("view engine", "ejs")
