@@ -47,7 +47,7 @@
     "listingDateTime":"Thu Jan 28 2021 03:26:03 GMT+0000 (Greenwich Mean Time)",
     "bids":[],
     "winner":""}
->]
+]
 ```
 ### Tech
 
