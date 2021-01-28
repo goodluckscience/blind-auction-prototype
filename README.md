@@ -19,6 +19,8 @@
   - If the file cannot be found, Heroku process vars key/value are used. It means that localhost installation uses .env-file.json, but Heroku installation doesn't use the file. (the file it is excluded in .gitignore)
   - Users data is fixed for 3 test users for demo version and stored in **userAuth** module
   - Pages: Home, Login, Auction, User Dashboard, Admin Dashboard and Logout (technically not a page, but route)
+  - Only Admin can add listing on Admin Dashboard, which will be visible on Auction page.
+  - still missing: mechanics should be added to buttons (they have generated ids, which need to be transferred with username to set winner, update users dashboards etc etc etc etc)
 
 ### Tech
 
