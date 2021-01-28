@@ -4,8 +4,8 @@ const photoUploadToAWS = require('./lib/photoUpload')
 var session = require('express-session');
 const userAuth = require('./lib/userAuth')
 const bodyParser = require("body-parser");
-const {getPhotos} = require('./lib/imageStore')
-const {getListings} = require('./lib/auctionListing')
+const {getPhotos,getPhotoNameById} = require('./lib/imageStore')
+const {getListings, getListingsArray, getAWSbucket} = require('./lib/auctionListing')
 
 var path = require('path');
 var http = require('http');
@@ -66,11 +66,14 @@ app.get('/logout', function(req, res){
 });
 
 app.get('/auction-page', (req, res) => {
+
+
   res.render('auction-page', { 
     loggedIn: req.session.loggedIn,
     userName: req.session.userName,
     userRole: req.session.userRole,
-    //getPhotos:
+    getAllListingsArray: getListingsArray(),
+    awsBucket: getAWSbucket()
   });
    //res.render('auction-page')
 
@@ -101,7 +104,7 @@ app.get('/getPhotos', getPhotos)
 
 app.get('/getListings', getListings)
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, '127.0.0.1', () => {
   console.log(`App listening on port: ${port}/`);
 });
 
