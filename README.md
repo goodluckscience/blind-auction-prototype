@@ -23,7 +23,8 @@
   - still missing: mechanics should be added to buttons (they have generated ids, which need to be transferred with username to set winner, update users dashboards etc etc etc etc)
 
 # Example of array of listings objects (used for Auction Page, dev lookup at route /getListings)
->[
+```json
+[
   {"itemId":"ae49a00c-695f-4bef-aa18-da1c915d4abb",
     "itemName":"Listing 3",
     "itemDescription":"Description 3",
@@ -47,7 +48,7 @@
     "bids":[],
     "winner":""}
 >]
-
+```
 ### Tech
 
 The test Blind Auction uses a number below listed source projects to work properly:
