@@ -92,7 +92,7 @@
 
             <div class="card " style="border:1px solid black;border-radius: 5px;text-align: center;">
                 <div class="card-header">
-                    <h5 class="card-title">Choose Item Photo</h5>
+                    <h5 class="card-title">New Auction Listing</h5>
                 </div>
                     <div class="card-body">
 
@@ -101,12 +101,21 @@
                               action    =  "/api/uploadaws"
                               method    =  "post"
                         >
+                        <div class="form-group">
+                          <label for="itemName">Name:</label>
+                          <input type="text" class="form-control" name="itemName" id="itemName">
+                        </div>
+                        <div class="form-group">
+                          <label for="itemDescription">Description:</label>
+                          <textarea type="text" class="form-control" name="itemDescription" id="itemDescription"></textarea>
+                        </div>
+
                             <div class="form-group">
                                 <label for="itemPhoto">Browse Images</label>
                                 <input type="file" name="itemPhoto" id="itemPhoto" class="form-control-file" value="Upload Image" >
                             </div>
                             <div class="form-group">
-                                <button type="button"  name="submit" id="btn-upload-photo" class="btn btn-primary">Upload Photo</button>
+                                <button type="button"  name="submit" id="btn-upload-photo" class="btn btn-primary">Add Auction</button>
                             </div>
 
                         </form>
@@ -134,8 +143,6 @@
 
   <%- include('layouts/footer'); -%>
 
-
-
   <%- include('layouts/scripts'); -%>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -145,13 +152,12 @@
     $(document).ready(function() {
 
       $("#btn-upload-photo").click(function(){        
-        $("#uploadForm").submit(); // Submit the form
+        $("#uploadForm").submit(); 
     });
 
         $('#uploadForm').submit(function(e) {
 
           e.preventDefault();
-
             $("#status").empty().text("File is uploading...");
         
             $(this).ajaxSubmit({
@@ -167,7 +173,7 @@
                 }
             });
         
-            return false;
+            //return false;
         });
 
     });

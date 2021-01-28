@@ -5,6 +5,7 @@ var session = require('express-session');
 const userAuth = require('./lib/userAuth')
 const bodyParser = require("body-parser");
 const {getPhotos} = require('./lib/imageStore')
+const {getListings} = require('./lib/auctionListing')
 
 var path = require('path');
 var http = require('http');
@@ -68,8 +69,11 @@ app.get('/auction-page', (req, res) => {
   res.render('auction-page', { 
     loggedIn: req.session.loggedIn,
     userName: req.session.userName,
-    userRole: req.session.userRole
+    userRole: req.session.userRole,
+    //getPhotos:
   });
+   //res.render('auction-page')
+
 })
 
 app.get('/user-dashboard', (req, res) => {
@@ -94,6 +98,8 @@ app.get('/admin-dashboard', (req, res) => {
 app.post('/api/uploadaws', photoUploadToAWS)
 
 app.get('/getPhotos', getPhotos)
+
+app.get('/getListings', getListings)
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`App listening on port: ${port}/`);
